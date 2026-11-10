@@ -137,6 +137,8 @@ body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);-webkit-text-siz
 .wb .queue-head .label{color:var(--pale2)}
 .wb .qcount{font-size:13px;color:var(--pale)}
 .wb .qcount b{color:#fff;font-size:16px}
+/* No queue limit (Jukebox Depth 0 or unset): hide the " of ..." part */
+.wb .depth-0 .of,.wb .depth-undefined .of,.wb .depth-null .of{display:none}
 .wb .qlist{counter-reset:q;max-height:184px;overflow-y:auto;margin-top:2px}
 .wb .qlist .jukebox-queue{counter-increment:q;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.2)}
 .wb .qlist .jukebox-queue:last-child{border-bottom:0}
@@ -336,7 +338,7 @@ body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);-webkit-text-siz
         </div>
 
         <div class="glass queue">
-          <div class="queue-head"><span class="label">In the cauldron</span><span class="qcount"><b>{QUEUE_SIZE}</b> of {QUEUE_DEPTH}</span></div>
+          <div class="queue-head"><span class="label">In the cauldron</span><span class="qcount depth-{QUEUE_DEPTH}"><b>{QUEUE_SIZE}</b><span class="of"> of {QUEUE_DEPTH}</span></span></div>
           <div class="qlist">{JUKEBOX_QUEUE}</div>
         </div>
         <!-- EDIT: MESSAGES — shown when no songs are requested -->

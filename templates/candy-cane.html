@@ -145,6 +145,8 @@ body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);-webkit-text-siz
 .cc .queue-head .label{color:var(--pale2)}
 .cc .qcount{font-size:13px;color:var(--pale)}
 .cc .qcount b{color:#fff;font-size:16px}
+/* No queue limit (Jukebox Depth 0 or unset): hide the " of ..." part */
+.cc .depth-0 .of,.cc .depth-undefined .of,.cc .depth-null .of{display:none}
 .cc .qlist{counter-reset:q;max-height:184px;overflow-y:auto;margin-top:2px}
 .cc .qlist .jukebox-queue{counter-increment:q;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.25)}
 .cc .qlist .jukebox-queue:last-child{border-bottom:0}
@@ -366,7 +368,7 @@ body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);-webkit-text-siz
         </div>
 
         <div class="glass queue">
-          <div class="queue-head"><span class="label">Requests in line</span><span class="qcount"><b>{QUEUE_SIZE}</b> of {QUEUE_DEPTH}</span></div>
+          <div class="queue-head"><span class="label">Requests in line</span><span class="qcount depth-{QUEUE_DEPTH}"><b>{QUEUE_SIZE}</b><span class="of"> of {QUEUE_DEPTH}</span></span></div>
           <div class="qlist">{JUKEBOX_QUEUE}</div>
         </div>
         <!-- EDIT: MESSAGES — shown when no songs are requested -->
